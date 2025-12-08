@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block body %}
+
+<style>
+body { background:#000; color:white; }
+
+.trial-box {
+    max-width:450px; margin:auto; margin-top:40px;
+    background:#0b0b0b; border:1px solid rgba(255,0,0,0.4);
+    border-radius:20px; padding:30px;
+    box-shadow:0 0 30px rgba(255,0,0,0.4);
+}
+.trial-box h1 {
+    color:#ff1a1a; text-shadow:0 0 12px rgba(255,0,0,0.7);
+}
+.trial-input {
+    width:100%; padding:12px; margin-top:10px;
+    border-radius:8px; border:1px solid #ff0000;
+    background:#1a1a1a; color:white;
+}
+.trial-btn {
+    width:100%; background:#ff0000; border:none;
+    margin-top:20px; padding:12px; border-radius:8px;
+    color:white; font-weight:600;
+    box-shadow:0 0 20px rgba(255,0,0,0.8);
+    transition:0.3s;
+}
+.trial-btn:hover { transform:scale(1.05); }
+</style>
+
+<div class="trial-box">
+    <h1 class="text-center mb-3">Free Trial Session</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input name="name" class="trial-input" placeholder="Full Name" required>
+        <input name="phone" class="trial-input" placeholder="Phone Number" required>
+        <input name="time" class="trial-input" placeholder="Preferred Time (e.g. 7 AM)">
+        <input name="goal" class="trial-input" placeholder="Your Fitness Goal">
+
+        <button class="trial-btn">Book Trial</button>
+    </form>
+</div>
+
+{% endblock %}

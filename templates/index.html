@@ -1,0 +1,309 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+{% load static %}
+{% block body %}
+
+
+<!-- ⚡ HERO SECTION -->
+<section class="hero-section text-center text-light d-flex flex-column justify-content-center align-items-center position-relative">
+
+  <!-- Background Image instead of video -->
+  <img src="/static/f4.avif" alt="Gym Background" class="hero-bg-img">
+
+  <div class="overlay"></div>
+
+  <div class="hero-content position-absolute top-50 start-50 translate-middle text-center">
+    <h1 class="display-4 fw-bold hero-title">TRAIN HARD, <span>STAY HUMBLE</span></h1>
+    <p class="lead hero-sub">Push your limits. Break your barriers. Become unstoppable.</p>
+
+    <!-- EXISTING BUTTON -->
+    <a href="/membership" class="btn btn-join">Join The Movement</a>
+
+    <!-- ⭐ NEW FREE TRIAL BUTTON (Neon Red Glow) -->
+    <div style="margin-top:30px;">
+      <a href="/trial/" style="
+          display:inline-block;
+          background: radial-gradient(circle at top, #ff5c5c, #ff0000);
+          padding: 14px 32px;
+          color:white;
+          font-weight:700;
+          font-size:20px;
+          border-radius:50px;
+          text-transform:uppercase;
+          text-decoration:none;
+          box-shadow:0 0 25px rgba(255,0,0,0.9);
+          transition:0.3s;
+      "
+      onmouseover="this.style.transform='scale(1.08)'; this.style.boxShadow='0 0 35px rgba(255,0,0,1)';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 25px rgba(255,0,0,0.9)';">
+          🔥 Book Your FREE 1-Day Trial
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ⚡ FEATURES SECTION -->
+<section class="features py-5 text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-4 section-title">Why Choose <span>Fitness Place</span></h2>
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <div class="feature-card">
+          <i class="fas fa-dumbbell fa-2x mb-3"></i>
+          <h5>Professional Trainers</h5>
+          <p>Get guided by certified fitness experts who push your limits safely and effectively.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <i class="fas fa-bolt fa-2x mb-3"></i>
+          <h5>High-Intensity Workouts</h5>
+          <p>Experience elite-level workouts designed to sculpt your body and build your mindset.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <i class="fas fa-heartbeat fa-2x mb-3"></i>
+          <h5>Modern Equipment</h5>
+          <p>Train with top-tier machines that redefine performance, comfort, and safety.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ⚡ FOOTER -->
+<footer class="footer text-center text-light position-relative py-5 mt-5">
+  <div class="footer-overlay"></div>
+  <div class="container position-relative">
+
+    <img src="/static/f3.png" alt="Fitness Place Gym Logo" class="footer-logo mb-3">
+    <h3 class="footer-brand">FITNESS <span>PLACE GYM</span></h3>
+    <p class="footer-text">Transform your body. Elevate your mindset. Live Axclusive.</p>
+
+    <div class="footer-social my-4">
+      <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social"><i class="fab fa-youtube"></i></a>
+      <a href="#" class="social"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="social"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <p class="footer-bottom mb-0">© 2025 <strong>Fitness Place Gym</strong> | Designed by <span>Axclusive Yash</span></p>
+  </div>
+</footer>
+
+
+<!-- ⚡ STYLES -->
+<style>
+  body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* HERO SECTION */
+  .hero-section {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4);
+    z-index: 0;
+    transition: transform 6s ease;
+  }
+
+  .hero-bg-img:hover {
+    transform: scale(1.05);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  .hero-content {
+    z-index: 2;
+    color: white;
+    animation: fadeUp 1.5s ease-out;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 30px #ff0000;
+    animation: glowText 2.5s infinite alternate;
+  }
+
+  .hero-title span { color: #ff1a1a; }
+
+  .hero-sub {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #ddd;
+  }
+
+  .btn-join {
+    background: linear-gradient(90deg, #ff0000, #ff4d4d);
+    color: white;
+    font-weight: 600;
+    border-radius: 30px;
+    padding: 12px 40px;
+    box-shadow: 0 0 20px #ff0000;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-join::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: rgba(255,255,255,0.3);
+    transform: skewX(-45deg);
+    transition: left 0.5s ease;
+  }
+
+  .btn-join:hover::before { left: 100%; }
+  .btn-join:hover { transform: scale(1.08); box-shadow: 0 0 40px #ff0000; }
+
+  /* FEATURES SECTION */
+  .features {
+    background: #0a0a0a;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #ff0000;
+  }
+
+  .section-title span {
+    color: #ff1a1a;
+  }
+
+  .feature-card {
+    background: linear-gradient(145deg, #080808, #1a0000);
+    border: 1px solid #ff0000;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(255,0,0,0.2);
+    transition: all 0.4s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 40px rgba(255,0,0,0.5);
+  }
+
+  .feature-card i {
+    color: #ff1a1a;
+    text-shadow: 0 0 10px #ff0000;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: linear-gradient(180deg, #0a0000, #150000, #000000);
+    border-top: 2px solid #ff0000;
+    box-shadow: 0 -4px 25px rgba(255,0,0,0.4);
+  }
+
+  .footer-overlay {
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,0,0,0.15), transparent 70%);
+    animation: pulseGlow 6s infinite ease-in-out;
+    z-index: 0;
+  }
+
+  .footer-logo {
+    width: 90px;
+    filter: drop-shadow(0 0 20px #ff0000);
+    animation: logoPulse 3s infinite ease-in-out;
+    z-index: 2;
+  }
+
+  .footer-brand {
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #fff;
+    text-shadow: 0 0 20px #ff0000;
+    animation: glowText 3s infinite alternate ease-in-out;
+  }
+
+  .footer-brand span { color: #ff1a1a; }
+
+  .footer-text { color: #ccc; font-size: 1rem; }
+
+  .footer-social a {
+    color: #fff;
+    font-size: 1.6rem;
+    margin: 0 12px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 8px #ff0000;
+  }
+
+  .footer-social a:hover {
+    color: #ff1a1a;
+    transform: scale(1.3);
+    text-shadow: 0 0 30px #ff0000, 0 0 60px #ff4d4d;
+  }
+
+  .footer-bottom {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-top: 20px;
+  }
+
+  .footer-bottom span {
+    color: #ff1a1a;
+    font-weight: 600;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes glowText {
+    from { text-shadow: 0 0 20px #ff0000; }
+    to { text-shadow: 0 0 50px #ff4d4d; }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.2); }
+  }
+
+  @keyframes logoPulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px #ff0000); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 35px #ff0000); }
+  }
+
+  @media (max-width: 768px) {
+    .hero-title { font-size: 2.2rem; }
+    .hero-sub { font-size: 1rem; }
+  }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous"></script>
+
+{% endblock body %}

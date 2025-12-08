@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<style>
+    body {
+        background: #000;
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* CARD BASE */
+    .db-card {
+        background: #0b0b0b;
+        border: 1px solid rgba(255,0,0,0.35);
+        border-radius: 20px;
+        padding: 25px;
+        box-shadow: 0 0 25px rgba(255,0,0,0.35);
+        transition: 0.3s ease;
+    }
+    .db-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 35px rgba(255,0,0,0.6);
+    }
+
+    /* CARD TITLES */
+    .db-title {
+        font-size: 1rem;
+        color: #ff4d4d;
+        text-shadow: 0 0 10px rgba(255,0,0,0.6);
+        font-weight: 600;
+    }
+
+    /* NUMBERS */
+    .db-number {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255,0,0,0.8);
+    }
+
+    /* TABLE */
+    table {
+        width: 100%;
+        color: #fff;
+        font-size: 0.9rem;
+    }
+    th {
+        color: #ff3333;
+        font-weight: 600;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255,0,0,0.5);
+        text-shadow: 0 0 7px rgba(255,0,0,0.7);
+    }
+    td { padding: 8px 0; color: #dcdcdc; }
+
+    tr:hover td {
+        color: #fff;
+        text-shadow: 0 0 7px rgba(255,0,0,0.7);
+    }
+
+    /* SECTION HEADING */
+    .section-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-top: 40px;
+        margin-bottom: 15px;
+        color: #ff0000;
+        text-shadow: 0 0 12px rgba(255,0,0,0.8);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+</style>
+
+<div class="container py-5">
+
+    <h1 class="text-center mb-5" 
+        style="color:#ff1a1a; text-shadow:0 0 20px rgba(255,0,0,0.8); font-weight:700;">
+        OWNER DASHBOARD 🔥
+    </h1>
+
+
+    <!-- TOP 4 CARDS -->
+    <div class="row g-4">
+
+        <div class="col-md-3">
+            <div class="db-card text-center">
+                <div class="db-title">Active Members</div>
+                <div class="db-number">{{ total_active }}</div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="db-card text-center">
+                <div class="db-title">Expiring in 7 days</div>
+                <div class="db-number">{{ expiring_soon }}</div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="db-card text-center">
+                <div class="db-title">Revenue (This Month)</div>
+                <div class="db-number">₹{{ monthly_revenue }}</div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="db-card text-center">
+                <div class="db-title">Leads (This Week)</div>
+                <div class="db-number">{{ leads_this_week }}</div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- EXPIRING SOON -->
+    <div class="section-title">Expiring Soon 🔥</div>
+    <div class="db-card">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Ends On</th>
+                <th>Days Left</th>
+            </tr>
+
+            {% for m in expiring_list %}
+            <tr>
+                <td>{{ m.user.username }}</td>
+                <td>{{ m.end_date }}</td>
+                <td>{{ m.end_date|timesince:"now" }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="3" class="text-center py-3 text-danger">No memberships expiring soon.</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- RECENT PAYMENTS -->
+    <div class="section-title">Recent Payments 💰</div>
+    <div class="db-card">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Invoice</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+
+            {% for p in recent_payments %}
+            <tr>
+                <td>{{ p.user.username }}</td>
+                <td>{{ p.invoice_number }}</td>
+                <td>₹{{ p.amount }}</td>
+                <td>{{ p.created_at|date:"d M, H:i" }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4" class="text-center py-3 text-danger">No payments found.</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

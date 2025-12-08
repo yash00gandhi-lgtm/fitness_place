@@ -1,0 +1,107 @@
+{% extends "base.html" %} {# ya "club/base.html" jo bhi tum use kar rahe ho #}
+
+{% block body %}
+
+<style>
+.trial-wrapper {
+    min-height: calc(100vh - 80px);
+    background: radial-gradient(circle at top, rgba(255,0,0,0.18), #000 65%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 40px 16px;
+}
+
+.trial-icon {
+    font-size: 70px;
+    color: #ff1b1b;
+    text-shadow: 0 0 18px rgba(255,0,0,0.9);
+    margin-bottom: 18px;
+    animation: pulseGlow 1.4s infinite;
+}
+
+.trial-title {
+    font-size: 36px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ff2a2a;
+    text-shadow: 0 0 20px rgba(255,0,0,0.9);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.trial-sub {
+    max-width: 520px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #d1d1d1;
+    margin-bottom: 28px;
+}
+
+.trial-sub span {
+    color: #ff4444;
+    font-weight: 600;
+}
+
+.trial-btn {
+    display: inline-block;
+    padding: 12px 40px;
+    border-radius: 999px;
+    background: linear-gradient(90deg,#ff1b1b,#ff4b2b);
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 0 22px rgba(255,0,0,0.8);
+    transition: all 0.25s ease;
+    transform: translateY(0);
+}
+
+.trial-btn:hover {
+    box-shadow: 0 0 32px rgba(255,0,0,1);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.trial-bottom-glow {
+    width: 100%;
+    height: 2px;
+    margin-top: 70px;
+    background: linear-gradient(90deg, transparent, #ff1b1b, transparent);
+    box-shadow: 0 0 26px rgba(255,0,0,0.9);
+    opacity: 0.7;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { text-shadow: 0 0 12px rgba(255,0,0,0.7); transform: scale(1); }
+    50% { text-shadow: 0 0 26px rgba(255,0,0,1); transform: scale(1.05); }
+}
+
+@media (min-width: 768px) {
+    .trial-title { font-size: 42px; }
+    .trial-sub { font-size: 17px; }
+}
+</style>
+
+<div class="trial-wrapper">
+    <div class="trial-icon">✖</div>
+
+    <h1 class="trial-title">Trial Already Used</h1>
+
+    <p class="trial-sub">
+        You have already claimed your <span>FREE Trial Session</span> at
+        <span>Fitness Place Gym</span>.<br>
+        Want to continue your progress? Talk to our team and choose the
+        membership that fits your goal.
+    </p>
+
+    <a href="/" class="trial-btn">
+        Go Back to Home
+    </a>
+
+    <div class="trial-bottom-glow"></div>
+</div>
+
+{% endblock %}

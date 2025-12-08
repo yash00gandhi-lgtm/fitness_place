@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block body %}
+
+<style>
+    body { background:#000; color:white; }
+
+    .lead-box {
+        max-width: 450px;
+        margin: auto;
+        background: #0b0b0b;
+        border: 1px solid rgba(255,0,0,0.4);
+        box-shadow: 0 0 30px rgba(255,0,0,0.4);
+        border-radius: 20px;
+        padding: 30px;
+        margin-top: 50px;
+    }
+
+    .lead-box h1 {
+        color:#ff2a2a;
+        text-shadow:0 0 12px rgba(255,0,0,0.7);
+    }
+
+    .lead-input {
+        width:100%;
+        padding:12px;
+        margin-top:10px;
+        border-radius:8px;
+        border:1px solid #ff0000;
+        background:#1a1a1a;
+        color:white;
+    }
+
+    .lead-btn {
+        width:100%;
+        background:#ff0000;
+        padding:12px;
+        border:none;
+        margin-top:20px;
+        border-radius:8px;
+        color:white;
+        font-weight:600;
+        box-shadow:0 0 20px rgba(255,0,0,0.7);
+        transition:0.3s;
+    }
+
+    .lead-btn:hover {
+        transform:scale(1.05);
+        box-shadow:0 0 30px rgba(255,0,0,1);
+    }
+</style>
+
+<div class="lead-box">
+    <h1 class="text-center mb-3">Lead Form</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" class="lead-input" name="name" placeholder="Full Name" required>
+        <input type="text" class="lead-input" name="phone" placeholder="Phone Number" required>
+        <input type="text" class="lead-input" name="goal" placeholder="Goal (Weight Gain, Fat Loss, etc)">
+        <input type="text" class="lead-input" name="source" placeholder="Source (Instagram, Walk-in, etc)">
+
+        <button class="lead-btn">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

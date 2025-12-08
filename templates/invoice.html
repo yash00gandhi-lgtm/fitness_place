@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Invoice {{ invoice.invoice_number }}{% endblock title %}
+
+{% block body %}
+
+<section class="invoice-bg py-5">
+  <div class="container d-flex justify-content-center">
+
+    <div class="invoice-card p-4 p-md-5 rounded-4">
+      <!-- HEADER -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <h2 class="invoice-brand mb-0">AxclusiveFit Gym</h2>
+          <p class="invoice-sub mb-0">Digital Membership Invoice</p>
+        </div>
+        <div class="text-end">
+          <p class="mb-1 small text-muted">Invoice No.</p>
+          <p class="fw-semibold">{{ invoice.invoice_number }}</p>
+        </div>
+      </div>
+
+      <hr class="invoice-divider">
+
+      <!-- ISSUED INFO -->
+      <div class="d-flex justify-content-between flex-wrap mb-4">
+        <div>
+          <p class="mb-1 small text-muted">Issued on</p>
+          <p class="fw-semibold">{{ invoice.created_at|date:"d M Y, H:i" }}</p>
+        </div>
+        <div class="text-md-end mt-3 mt-md-0">
+          <p class="mb-1 small text-muted">Payment ID</p>
+          <p class="fw-semibold">
+            {{ invoice.razorpay_payment_id|default:"—" }}
+          </p>
+        </div>
+      </div>
+
+      <!-- MEMBER -->
+      <div class="mb-3">
+        <h5 class="section-title">Member</h5>
+        <p class="mb-1">
+          {{ invoice.user.get_full_name|default:invoice.user.username }}
+        </p>
+        <p class="mb-0 small text-muted">User ID: {{ invoice.user.id }}</p>
+      </div>
+
+      <hr class="invoice-divider">
+
+      <!-- MEMBERSHIP DETAILS -->
+      <div class="mb-3">
+        <h5 class="section-title">Membership Details</h5>
+
+        <p class="mb-1">
+          <span class="text-muted small">Plan:</span>
+          <span class="fw-semibold">
+            {{ invoice.membership.plan.name }}
+          </span>
+        </p>
+
+        <p class="mb-1">
+          <span class="text-muted small">Duration:</span>
+          <span class="fw-semibold">
+            {{ invoice.membership.plan.duration }} months
+          </span>
+        </p>
+
+        <p class="mb-1">
+          <span class="text-muted small">Start:</span>
+          {{ invoice.membership.start_date|date:"d M, Y" }}
+        </p>
+        <p class="mb-0">
+          <span class="text-muted small">End:</span>
+          {{ invoice.membership.end_date|date:"d M, Y" }}
+        </p>
+      </div>
+
+      <hr class="invoice-divider">
+
+      <!-- AMOUNT -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <p class="mb-1 small text-muted">Membership Fee</p>
+          <p class="fw-semibold">₹ {{ invoice.amount }}</p>
+        </div>
+        <div class="text-end">
+          <p class="mb-1 small text-muted">Total</p>
+          <p class="total-amount mb-0">₹ {{ invoice.amount }}</p>
+        </div>
+      </div>
+
+      <!-- FOOT NOTE + BUTTON -->
+      <div class="d-flex flex-wrap justify-content-between align-items-center mt-4">
+        <p class="small text-muted mb-3 mb-md-0">
+          This is a system-generated invoice from AxclusiveFit Gym.
+          For any queries, please contact the front desk.
+        </p>
+
+        <button class="print-btn" onclick="window.print()">
+    Print / Download
+</button>
+
+        
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+
+    .print-btn {
+    display: inline-block;
+    padding: 10px 28px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ff0000, #ff4b4b);
+    color: #ffffff !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    box-shadow: 0 0 18px rgba(255, 0, 0, 0.7);
+    transition: 0.25s ease;
+}
+
+.print-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 28px rgba(255, 0, 0, 1);
+    color: #fff;
+}
+
+
+.invoice-card {
+    max-width: 780px;
+    width: 100%;
+    background: #111;  /* DARK GREY instead of pure black */
+    border-radius: 24px;
+    border: 1px solid rgba(255,0,0,0.5);
+    box-shadow: 0 0 35px rgba(255,0,0,0.5);
+    color: #f8f8f8;   /* FULL BRIGHT WHITE TEXT */
+}
+
+.invoice-brand {
+    color: #ffffff !important;
+    text-shadow: 0 0 25px rgba(255,0,0,1);
+}
+
+.section-title {
+    color: #ff4d4d !important;
+    font-weight: 700;
+}
+
+.text-muted {
+    color: #bbbbbb !important;
+}
+
+.fw-semibold {
+    color: #ffffff !important;
+}
+
+.total-amount {
+    color: #ff3333 !important;
+    text-shadow: 0 0 20px rgba(255,0,0,1);
+}
+</style>
+
+
+{% endblock body %}

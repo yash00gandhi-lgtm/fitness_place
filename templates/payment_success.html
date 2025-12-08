@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<!-- CONFETTI JS (for celebration animation) -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+  body {
+    background: #000;
+  }
+
+  .success-card {
+    background: radial-gradient(circle at top, rgba(255,0,0,0.25), transparent 60%),
+                #0b0b0b;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    border: 1px solid rgba(255,0,0,0.4);
+    box-shadow: 0 0 30px rgba(255,0,0,0.4);
+    animation: popUp 0.6s ease-out;
+  }
+
+  @keyframes popUp {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .success-icon {
+    font-size: 80px;
+    color: #00ff7f;
+    text-shadow: 0 0 15px #00ff7f;
+    animation: pulse 1.6s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+  }
+
+  .success-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #00ff7f;
+    text-shadow: 0 0 15px rgba(0,255,127,0.6);
+  }
+
+  .neon-line {
+    width: 80%;
+    height: 2px;
+    margin: 15px auto;
+    background: linear-gradient(90deg, transparent, #ff0000, transparent);
+    animation: glow 2s infinite alternate;
+  }
+
+  @keyframes glow {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+
+  .msg {
+    font-size: 1rem;
+    color: #dddddd;
+  }
+
+  /* Red Neon Buttons */
+  .btn-neon {
+    background: radial-gradient(circle at top, #ff5c5c, #ff0000);
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(255,0,0,0.7);
+    transition: 0.3s ease;
+    display: inline-block;
+  }
+
+  .btn-neon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255,0,0,1);
+  }
+</style>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="success-card">
+
+    <div class="success-icon">✔</div>
+
+    <h1 class="success-title mt-3">Payment Successful!</h1>
+
+    <div class="neon-line"></div>
+
+    <p class="msg">
+      Your membership has been activated.<br>
+      Welcome to <strong>FITNESS PLACE GYM</strong> 💪🔥  
+    </p>
+
+    <!-- 🔥 NEW DOWNLOAD INVOICE BUTTON -->
+    <a href="{% url 'generate_invoice' membership.id %}" class="btn-neon">
+      Download Invoice
+    </a>
+
+    <!-- EXISTING HOME BUTTON -->
+    <a href="/" class="btn-neon">Go to Home</a>
+
+  </div>
+</div>
+
+<script>
+  // Confetti blast on page load
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+</script>
+
+{% endblock %}

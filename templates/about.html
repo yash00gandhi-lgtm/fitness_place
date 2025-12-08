@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% block title %}AboutUs{% endblock title %}
+{% load static %}
+
+{% block body %}
+
+{% load static %}
+
+<!-- ⚡ ABOUT HERO SECTION -->
+<section class="about-hero position-relative text-center text-light">
+  <img src="/static/gym1.jpg" alt="About Gym" class="hero-bg-img">
+  <div class="overlay"></div>
+
+  <div class="hero-text position-absolute top-50 start-50 translate-middle">
+    <h1 class="display-3 fw-bold text-uppercase glow-text">About <span>Fitness Place</span></h1>
+    <p class="lead">Where Discipline Meets Transformation</p>
+  </div>
+</section>
+
+
+<!-- ⚡ ABOUT CONTENT -->
+<section class="about-content py-5">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <img src="/static/f5.webp" alt="Gym Interior" class="img-fluid rounded-4 shadow-lg about-img">
+      </div>
+      <div class="col-lg-6 text-light">
+        <h2 class="fw-bold mb-3 section-heading">Our Journey</h2>
+        <p class="lead mb-3 text-muted">
+           <span class="text-danger fw-semibold">Fitness Place</span>, 
+        </p>
+        <p class="text-secondary">
+          Since our beginning, we’ve helped hundreds of individuals transform not only their bodies but also their outlook on life. 
+          Our trainers and coaches combine modern science with timeless discipline — the Axclusive way.
+        </p>
+        <a href="#trainers" class="btn btn-join mt-3">Meet Our Trainers</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ⚡ OUR MISSION & VISION -->
+<section class="mission-section py-5 text-center text-light position-relative">
+  <div class="container">
+    <h2 class="fw-bold mb-4 section-title">Our <span>Mission</span> & <span>Vision</span></h2>
+    <div class="row gy-4">
+      <div class="col-md-6">
+        <div class="mission-card">
+          <i class="fas fa-bullseye fa-2x mb-3"></i>
+          <h5 class="fw-bold">Our Mission</h5>
+          <p>To empower every individual to push limits, embrace discipline, and achieve their best version — physically & mentally.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mission-card">
+          <i class="fas fa-eye fa-2x mb-3"></i>
+          <h5 class="fw-bold">Our Vision</h5>
+          <p>To redefine fitness culture by combining aesthetics, science, and mindset — making strength a lifestyle, not a choice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ⚡ TRAINERS SECTION -->
+<section id="trainers" class="trainers-section py-5 text-center text-light">
+  <div class="container">
+    <h2 class="fw-bold mb-4 section-title">Meet Our <span>Trainers</span></h2>
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <div class="trainer-card">
+          <img src="/static/gym6.jpg" alt="Trainer 1" class="trainer-img">
+          <h5 class="mt-3 fw-bold">Hardik Lamba</h5>
+          <p>Strength & Conditioning Coach</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="trainer-card">
+          <img src="/static/gym4.jpg" alt="Trainer 2" class="trainer-img">
+          <h5 class="mt-3 fw-bold">Samriddhi</h5>
+          <p>Functional Training Expert</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="trainer-card">
+          <img src="/static/gym5.jpg" alt="Trainer 3" class="trainer-img">
+          <h5 class="mt-3 fw-bold">Yash Gandhi</h5>
+          <p>Nutrition & Transformation Coach</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ⚡ VALUES SECTION -->
+<section class="values-section py-5 text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-4 section-title">Our <span>Core Values</span></h2>
+    <div class="row gy-4">
+      <div class="col-md-3">
+        <div class="value-box">Discipline</div>
+      </div>
+      <div class="col-md-3">
+        <div class="value-box">Consistency</div>
+      </div>
+      <div class="col-md-3">
+        <div class="value-box">Mindset</div>
+      </div>
+      <div class="col-md-3">
+        <div class="value-box">Growth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ⚡ FOOTER (reuse same footer from home page) -->
+<footer class="footer text-center text-light position-relative py-5 mt-5">
+  <div class="footer-overlay"></div>
+  <div class="container position-relative">
+    <img style="height: 200px;" src="/static/f3.png" alt="Fitness Place Gym Logo" class="footer-logo mb-3">
+    <h3 class="footer-brand">FITNESS <span>PLACE GYM</span></h3>
+    <p class="footer-text">Transform your body. Elevate your mindset. Live Axclusive.</p>
+    <div class="footer-social my-4">
+      <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social"><i class="fab fa-youtube"></i></a>
+      <a href="#" class="social"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="social"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p class="footer-bottom mb-0">© 2025 <strong>Fitness Place Gym</strong> | Designed by <span>Axclusive Yash</span></p>
+  </div>
+</footer>
+
+
+<!-- ⚡ STYLES -->
+<style>
+  body { background-color: #000; color: #fff; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+
+  .about-hero { height: 80vh; position: relative; overflow: hidden; }
+  .about-hero .hero-bg-img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover; filter: brightness(1); transition: transform 8s ease;
+  }
+  .about-hero .hero-bg-img:hover { transform: scale(1.05); }
+  .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1; }
+  .hero-text { z-index: 2; }
+  .hero-text h1 { text-shadow: 0 0 30px #ff0000; animation: glowText 3s infinite alternate; }
+  .hero-text span { color: #ff1a1a; }
+
+  .about-content .about-img { border: 2px solid #ff0000; border-radius: 20px; box-shadow: 0 0 30px rgba(255,0,0,0.3); }
+  .section-heading { text-shadow: 0 0 10px #ff0000; }
+
+  .mission-card {
+    background: linear-gradient(145deg, #080808, #1a0000);
+    border: 1px solid #ff0000;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 25px rgba(255,0,0,0.2);
+    transition: all 0.4s ease;
+  }
+  .mission-card:hover { transform: translateY(-10px); box-shadow: 0 0 45px rgba(255,0,0,0.6); }
+  .mission-card i { color: #ff1a1a; text-shadow: 0 0 10px #ff0000; }
+
+  .trainer-card {
+    background: linear-gradient(145deg, #0a0a0a, #1a0000);
+    border-radius: 20px;
+    padding: 25px;
+    transition: 0.4s;
+    border: 1px solid #ff0000;
+  }
+  .trainer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(255,0,0,0.6);
+  }
+  .trainer-img {
+    width: 100%; border-radius: 20px; border: 2px solid #ff0000; transition: 0.3s;
+  }
+  .trainer-card:hover .trainer-img { transform: scale(1.05); }
+
+  .values-section { background: #0a0a0a; }
+  .value-box {
+    background: linear-gradient(145deg, #080808, #1a0000);
+    border: 1px solid #ff0000;
+    border-radius: 15px;
+    padding: 25px 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(255,0,0,0.3);
+    transition: 0.4s;
+  }
+  .value-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(255,0,0,0.6);
+    color: #ff1a1a;
+  }
+
+  .section-title { text-shadow: 0 0 10px #ff0000; text-transform: uppercase; }
+  .section-title span { color: #ff1a1a; }
+
+  @keyframes glowText {
+    from { text-shadow: 0 0 15px #ff0000; }
+    to { text-shadow: 0 0 50px #ff4d4d; }
+  }
+</style>
+
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous"></script>
+
+
+{% endblock body %}

@@ -1,0 +1,117 @@
+{% extends "base.html" %} {# ya "club/base.html" jo bhi tum use karte ho #}
+
+{% block body %}
+
+<style>
+.trial-success-wrapper {
+    min-height: calc(100vh - 80px);
+    background: radial-gradient(circle at top, rgba(0,255,120,0.12), #000 65%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 40px 16px;
+}
+
+.trial-success-icon {
+    font-size: 70px;
+    color: #00ff7f;
+    text-shadow: 0 0 18px rgba(0,255,140,0.9);
+    margin-bottom: 18px;
+    animation: successPulse 1.4s infinite;
+}
+
+.trial-success-title {
+    font-size: 36px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #00ff9b;
+    text-shadow: 0 0 20px rgba(0,255,150,0.9);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.trial-success-sub {
+    max-width: 540px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #d1d1d1;
+    margin-bottom: 24px;
+}
+
+.trial-success-sub span {
+    color: #00ff9b;
+    font-weight: 600;
+}
+
+.trial-success-note {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 26px;
+}
+
+.trial-success-btn {
+    display: inline-block;
+    padding: 12px 40px;
+    border-radius: 999px;
+    background: linear-gradient(90deg,#ff1b1b,#ff4b2b);
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 0 22px rgba(255,0,0,0.8);
+    transition: all 0.25s ease;
+    transform: translateY(0);
+}
+
+.trial-success-btn:hover {
+    box-shadow: 0 0 32px rgba(255,0,0,1);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.trial-success-bottom-glow {
+    width: 100%;
+    height: 2px;
+    margin-top: 70px;
+    background: linear-gradient(90deg, transparent, #ff1b1b, transparent);
+    box-shadow: 0 0 26px rgba(255,0,0,0.9);
+    opacity: 0.7;
+}
+
+@keyframes successPulse {
+    0%, 100% { text-shadow: 0 0 12px rgba(0,255,150,0.7); transform: scale(1); }
+    50% { text-shadow: 0 0 26px rgba(0,255,150,1); transform: scale(1.05); }
+}
+
+@media (min-width: 768px) {
+    .trial-success-title { font-size: 42px; }
+    .trial-success-sub { font-size: 17px; }
+}
+</style>
+
+<div class="trial-success-wrapper">
+    <div class="trial-success-icon">✔</div>
+
+    <h1 class="trial-success-title">Trial Booked</h1>
+
+    <p class="trial-success-sub">
+        Your <span>FREE Trial Session</span> at
+        <span>Fitness Place Gym</span> is successfully booked.
+        <br>
+        Our team will contact you shortly to confirm your exact timing.
+    </p>
+
+    <p class="trial-success-note">
+        Be ready. Come in your workout clothes and give your <span>100%</span>.
+    </p>
+
+    <a href="/" class="trial-success-btn">
+        Back to Home
+    </a>
+
+    <div class="trial-success-bottom-glow"></div>
+</div>
+
+{% endblock %}

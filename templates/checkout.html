@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<style>
+  /* ------------ FITNESS PLACE GYM – RED NEON CHECKOUT ------------ */
+
+  .checkout-section {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+  }
+
+  .checkout-card {
+    background: radial-gradient(circle at top left, rgba(255,0,0,0.15), transparent 60%),
+                radial-gradient(circle at bottom right, rgba(255,0,0,0.12), transparent 55%),
+                #050505;
+    border-radius: 22px;
+    padding: 28px 26px;
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+  }
+
+  .checkout-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    border: 1px solid rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .checkout-card:hover {
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.65);
+    transform: translateY(-4px);
+  }
+
+  .checkout-title {
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .red-text {
+    color: #ff3b3b;
+  }
+
+  .neon-divider {
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, #ff0000, #ff3b3b, transparent);
+    margin: 14px 0 18px;
+    animation: neonGlow 1.6s infinite alternate;
+  }
+
+  @keyframes neonGlow {
+    0% { opacity: 0.35; }
+    100% { opacity: 1; }
+  }
+
+  .checkout-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #bbbbbb;
+  }
+
+  .plan-name {
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  .price-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  .checkout-steps {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #888;
+    margin-bottom: 12px;
+  }
+
+  .checkout-steps span {
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.03);
+    margin-right: 6px;
+  }
+
+  .checkout-steps .active-step {
+    background: rgba(255,0,0,0.25);
+    color: #fff;
+  }
+
+  .checkout-benefits li {
+    font-size: 0.9rem;
+    color: #cfcfcf;
+    margin-bottom: 4px;
+  }
+
+  .checkout-benefits i {
+    font-size: 0.8rem;
+    margin-right: 6px;
+    color: #ff3b3b;
+  }
+
+  .btn-red-neon {
+    width: 100%;
+    border-radius: 999px;
+    border: none;
+    padding: 11px 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: radial-gradient(circle at 20% 0, #ff8585, #ff0000 55%);
+    color: #ffffff;
+    box-shadow: 0 0 18px rgba(255, 0, 0, 0.7);
+    transition: 0.25s ease;
+  }
+
+  .btn-red-neon:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 28px rgba(255, 0, 0, 0.95);
+    color: #ffffff;
+  }
+
+  .secure-text {
+    font-size: 0.75rem;
+    color: #999;
+  }
+</style>
+
+<section class="checkout-section py-5">
+  <div class="container text-light">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-5">
+
+        <div class="checkout-card">
+
+          <div class="checkout-steps mb-2">
+            <span class="active-step">1. Plan</span>
+            <span>2. Details</span>
+            <span>3. Payment</span>
+          </div>
+
+          <h2 class="checkout-title mb-2">Checkout</h2>
+          <p class="mb-1 checkout-label">You are about to purchase</p>
+          <p class="plan-name red-text mb-2">{{ plan.name }}</p>
+
+          <div class="neon-divider"></div>
+
+          <p class="checkout-label mb-1">Price</p>
+          <p class="price-text red-text mb-3">₹{{ plan.price }}</p>
+
+          <ul class="list-unstyled checkout-benefits mb-3">
+            <li><i class="bi bi-dot"></i>Access to all gym equipment</li>
+            <li><i class="bi bi-dot"></i>Locker & changing room facility</li>
+            <li><i class="bi bi-dot"></i>No hidden charges, all taxes included</li>
+          </ul>
+
+          <p class="mb-3" style="font-size:0.9rem; color:#b3b3b3;">
+            This is your final confirmation. Click the button below to proceed to secure online payment.
+          </p>
+
+          <!-- Hidden form jisme Razorpay response jayega -->
+          <form id="payment-form" method="POST" action="{% url 'payment_success' %}">
+            {% csrf_token %}
+            <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
+            <input type="hidden" name="razorpay_order_id" id="razorpay_order_id">
+            <input type="hidden" name="razorpay_signature" id="razorpay_signature">
+          </form>
+
+          <!-- Razorpay checkout script -->
+          <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+          <!-- Payment Button -->
+          <button id="pay-btn" class="btn-red-neon">
+            Proceed to Secure Payment
+          </button>
+
+          <p class="secure-text text-center mt-2">
+            256-bit SSL secured • Instant activation after payment
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById("pay-btn").onclick = function(e) {
+      e.preventDefault();
+
+      var options = {
+          "key": "{{ razorpay_key_id }}",
+          "amount": "{{ order.amount }}",   // paise
+          "currency": "INR",
+          "name": "Fitness Place Gym",
+          "description": "Membership - {{ plan.name }}",
+          "order_id": "{{ order.id }}",
+          "theme": {
+              "color": "#ff0000"
+          },
+          "handler": function (response){
+              // Razorpay se response aaya -> form fill karo + submit
+              document.getElementById("razorpay_payment_id").value = response.razorpay_payment_id;
+              document.getElementById("razorpay_order_id").value = response.razorpay_order_id;
+              document.getElementById("razorpay_signature").value = response.razorpay_signature;
+              document.getElementById("payment-form").submit();
+          }
+      };
+
+      var rzp1 = new Razorpay(options);
+      rzp1.open();
+  }
+</script>
+
+{% endblock %}

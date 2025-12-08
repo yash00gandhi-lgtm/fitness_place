@@ -1,0 +1,281 @@
+{% extends "base.html" %}
+
+{% block title %}Trainer{% endblock title %}
+{% load static %}
+
+{% block body %}
+
+{% load static %}
+
+<!-- ⚡ HERO SECTION -->
+<section class="trainers-hero text-center text-light position-relative">
+  <img src="/static/gym7.jpg" alt="Trainers Background" class="hero-bg">
+  <div class="overlay"></div>
+
+  <div class="hero-content position-absolute top-50 start-50 translate-middle">
+    <h1 class="display-4 fw-bold text-uppercase glow-text">Train with the <span>Elite</span></h1>
+    <p class="lead text-light">Discipline. Power. Passion. – That’s what defines us.</p>
+  </div>
+</section>
+
+<!-- ⚡ TRAINERS SECTION -->
+<section class="trainers-section py-5 text-light text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-5 section-title">Meet Our <span>Warriors</span></h2>
+    <div class="row g-4 justify-content-center">
+
+      <!-- Trainer 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="trainer-card">
+          <div class="trainer-img-box">
+            <img src="/static/gym5.jpg" alt="Trainer 1" class="trainer-img">
+            <div class="trainer-overlay">
+              <h5>“Pain builds Power.”</h5>
+            </div>
+          </div>
+          <h4 class="trainer-name mt-3">Yash “The Machine” Gandhi</h4>
+          <p class="trainer-role">Strength & Conditioning Coach</p>
+          <div class="trainer-details">
+            <ul>
+              <li>10+ Years Experience</li>
+              <li>Certified ISSA Coach</li>
+              <li>Specializes in Hypertrophy Training</li>
+            </ul>
+          </div>
+          <a href="/contact" class="btn btn-glow mt-3">Book Session</a>
+        </div>
+      </div>
+
+      <!-- Trainer 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="trainer-card popular">
+          <div class="trainer-img-box">
+            <img src="/static/gym4.jpg" alt="Trainer 2" class="trainer-img">
+            <div class="trainer-overlay">
+              <h5>“No Weakness. No Mercy.”</h5>
+            </div>
+          </div>
+          <h4 class="trainer-name mt-3">Samriddhi “Iron Queen” </h4>
+          <p class="trainer-role">Functional & HIIT Expert</p>
+          <div class="trainer-details">
+            <ul>
+              <li>National Fitness Model</li>
+              <li>Functional Training Specialist</li>
+              <li>Custom Diet & Mobility Programs</li>
+            </ul>
+          </div>
+          <a href="/contact" class="btn btn-glow mt-3">Book Session</a>
+        </div>
+      </div>
+
+      <!-- Trainer 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="trainer-card">
+          <div class="trainer-img-box">
+            <img src="/static/gym6.jpg" alt="Trainer 3" class="trainer-img">
+            <div class="trainer-overlay">
+              <h5>“Dominate your limits.”</h5>
+            </div>
+          </div>
+          <h4 class="trainer-name mt-3">Hardik “Beast Mode” Lamba</h4>
+          <p class="trainer-role">Transformation & Nutrition Expert</p>
+          <div class="trainer-details">
+            <ul>
+              <li>Body Recomposition Specialist</li>
+              <li>Certified Nutrition Coach</li>
+              <li>Personalized 1-on-1 Programs</li>
+            </ul>
+          </div>
+          <a href="/contact" class="btn btn-glow mt-3">Book Session</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⚡ CTA SECTION -->
+<section class="trainer-cta py-5 text-center text-light position-relative">
+  <div class="overlay-dark"></div>
+  <div class="container position-relative">
+    <h2 class="display-6 fw-bold text-uppercase glow-text">Transform Your <span>Mind & Body</span></h2>
+    <p class="lead mb-4">Join our elite training sessions & feel the difference within weeks.</p>
+    <a href="/membership" class="btn btn-glow px-5 py-2">View Membership Plans</a>
+  </div>
+</section>
+
+<!-- ⚡ FOOTER -->
+<footer class="footer text-center text-light position-relative py-5 mt-5">
+  <div class="footer-overlay"></div>
+  <div class="container position-relative">
+    <img src="/static/f3.png" alt="Fitness Place Gym Logo" class="footer-logo mb-3">
+    <h3 class="footer-brand">FITNESS <span>PLACE GYM</span></h3>
+    <p class="footer-text">Transform your body. Elevate your mindset. Live Axclusive.</p>
+    <div class="footer-social my-4">
+      <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social"><i class="fab fa-youtube"></i></a>
+      <a href="#" class="social"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="social"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p class="footer-bottom mb-0">© 2025 <strong>Fitness Place Gym</strong> | Designed by <span>Axclusive Yash</span></p>
+  </div>
+</footer>
+
+
+<!-- ⚡ STYLES -->
+<style>
+  body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* HERO SECTION */
+  .trainers-hero {
+    height: 70vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(1);
+    transition: transform 8s ease;
+  }
+  .hero-bg:hover { transform: scale(1.05); }
+  .overlay {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.65);
+  }
+  .glow-text { text-shadow: 0 0 25px #ff0000, 0 0 50px #ff4d4d; animation: glowText 3s infinite alternate; }
+  .glow-text span { color: #ff1a1a; }
+
+  /* TRAINER CARDS */
+  .trainer-card {
+    background: linear-gradient(145deg, #080808, #1a0000);
+    border: 1px solid #ff0000;
+    border-radius: 20px;
+    padding: 35px 25px;
+    box-shadow: 0 0 25px rgba(255,0,0,0.2);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .trainer-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 50px rgba(255,0,0,0.6);
+  }
+
+  .trainer-img-box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+  }
+  .trainer-img {
+    width: 100%;
+    border-radius: 15px;
+    transition: transform 0.6s ease;
+    border: 2px solid #ff0000;
+  }
+  .trainer-card:hover .trainer-img { transform: scale(1.1); }
+
+  .trainer-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex; justify-content: center; align-items: center;
+    opacity: 0;
+    transition: 0.4s ease;
+    border-radius: 15px;
+  }
+  .trainer-card:hover .trainer-overlay { opacity: 1; }
+  .trainer-overlay h5 {
+    color: #ffb3b3;
+    font-style: italic;
+    text-shadow: 0 0 10px #ff0000;
+  }
+
+  .trainer-name {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 15px #ff0000;
+  }
+  .trainer-role {
+    color: #ff8080;
+    font-weight: 600;
+  }
+  .trainer-details ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  .trainer-details li {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255,0,0,0.5);
+    margin: 5px 0;
+    font-size: 0.95rem;
+  }
+
+  /* BUTTON */
+  .btn-glow {
+    background: linear-gradient(90deg, #ff0000, #ff4d4d);
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 0 20px #ff0000;
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-glow::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: rgba(255,255,255,0.3);
+    transform: skewX(-45deg);
+    transition: left 0.5s ease;
+  }
+  .btn-glow:hover::before { left: 100%; }
+  .btn-glow:hover { transform: scale(1.08); box-shadow: 0 0 40px #ff0000; }
+
+  /* CTA SECTION */
+  .trainer-cta {
+    background: url("{% static 'images/training-bg.jpg' %}") center/cover no-repeat;
+    position: relative;
+  }
+  .overlay-dark {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.75);
+  }
+
+  /* FOOTER */
+  .footer {
+    background: linear-gradient(180deg, #0a0000, #150000, #000000);
+    border-top: 2px solid #ff0000;
+    box-shadow: 0 -4px 25px rgba(255,0,0,0.4);
+  }
+  .footer-logo { width: 90px; filter: drop-shadow(0 0 20px #ff0000); }
+  .footer-brand { font-weight: 800; letter-spacing: 1.5px; color: #fff; text-shadow: 0 0 20px #ff0000; }
+  .footer-brand span { color: #ff1a1a; }
+
+  /* ANIMATIONS */
+  @keyframes glowText {
+    from { text-shadow: 0 0 15px #ff0000; }
+    to { text-shadow: 0 0 45px #ff4d4d; }
+  }
+</style>
+
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous"></script>
+
+
+
+{% endblock body %}

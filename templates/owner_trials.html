@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block body %}
+
+<style>
+body { background:#000; color:white; }
+table { width:100%; margin-top:30px; }
+th {
+    color:#ff3333; text-shadow:0 0 12px rgba(255,0,0,0.8);
+    border-bottom:1px solid rgba(255,0,0,0.5); padding-bottom:10px;
+}
+td { padding:12px 0; border-bottom:1px solid rgba(255,0,0,0.2); }
+</style>
+
+<div class="container mt-5">
+<h1 style="color:#ff1a1a; text-shadow:0 0 20px rgba(255,0,0,0.8);">
+    Trial Bookings 🔥
+</h1>
+
+<table>
+<tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Time</th>
+    <th>Goal</th>
+    <th>Status</th>
+    <th>Date</th>
+</tr>
+
+{% for t in trials %}
+<tr>
+    <td>{{ t.name }}</td>
+    <td>{{ t.phone }}</td>
+    <td>{{ t.preferred_time }}</td>
+    <td>{{ t.goal }}</td>
+    <td>{{ t.status }}</td>
+    <td>{{ t.created_at|date:"d M, H:i" }}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+{% endblock %}

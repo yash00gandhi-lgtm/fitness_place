@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Membership Plans{% endblock title %}
+
+{% block body %}
+
+<section class="plans-section py-5 text-light">
+  <div class="container">
+    <h1 class="text-center mb-4 text-uppercase" style="text-shadow:0 0 20px red;">
+      Choose Your <span class="text-danger">Membership</span>
+    </h1>
+
+    <div class="row g-4 justify-content-center">
+      {% for plan in plans %}
+        <div class="col-md-6 col-lg-3">
+          <div class="plan-card p-4 rounded-4 h-100">
+
+            <h3 class="plan-name mb-1">{{ plan.name }}</h3>
+
+            <p class="label-text mb-1 small">Duration</p>
+            <p class="duration-text">{{ plan.duration_months }} months</p>
+
+            <p class="label-text mb-1 small">Price</p>
+            <p class="price-text">₹ {{ plan.price }}</p>
+
+            <ul class="small mb-3 plan-list">
+              <li>Full gym access</li>
+              <li>Locker & changing room</li>
+              <li>No hidden charges</li>
+            </ul>
+
+            <a href="{% url 'create_order' plan.id %}" class="btn btn-plan w-100">
+              Select Plan
+            </a>
+
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+
+  /* Background */
+  .plans-section {
+    background: radial-gradient(circle at top, rgba(255,0,0,0.2), #000 70%);
+  }
+
+  /* Card */
+  .plan-card {
+    background: #070707;
+    border: 1px solid rgba(255,0,0,0.4);
+    box-shadow: 0 0 22px rgba(255,0,0,0.4);
+    transition: 0.3s ease;
+  }
+
+  .plan-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 32px rgba(255, 0, 0, 0.9);
+  }
+
+  /* Labels (Duration, Price) */
+  .label-text {
+    color: #bbbbbb !important;
+    letter-spacing: 0.5px;
+  }
+
+  /* Bright Duration Text */
+  .duration-text {
+    color: #ffffff !important;
+    font-weight: 600;
+    text-shadow: 0 0 12px rgba(255,0,0,0.6);
+  }
+
+  /* Neon Price */
+  .price-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff3b3b !important;
+    text-shadow: 0 0 16px rgba(255,0,0,1);
+  }
+
+  /* List */
+  .plan-list li {
+    color: #dddddd;
+    margin-bottom: 4px;
+  }
+
+  /* Button */
+  .btn-plan {
+    border-radius: 999px;
+    background: linear-gradient(90deg,#ff0000,#ff4d4d);
+    color:#fff;
+    font-weight:600;
+    padding: 10px;
+    box-shadow:0 0 18px rgba(255,0,0,0.8);
+    transition: 0.25s ease;
+  }
+
+  .btn-plan:hover {
+    color:#fff;
+    transform:translateY(-2px) scale(1.03);
+    box-shadow:0 0 30px rgba(255,0,0,1);
+  }
+
+</style>
+
+{% endblock body %}
