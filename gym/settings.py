@@ -81,19 +81,23 @@ WSGI_APPLICATION = 'gym.wsgi.application'
 
 # Render / production friendly: DATABASE_URL ho to use karega,
 # warna default sqlite use karega
+import os
+import dj_database_url
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fitness_place_db',
-        'USER': 'fitness_user',
-        'PASSWORD': 'StrongPassword123!',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': os.environ.get("MYSQL_NAME"),
+        'USER': os.environ.get("MYSQL_USER"),
+        'PASSWORD': os.environ.get("MYSQL_PASSWORD"),
+        'HOST': os.environ.get("MYSQL_HOST"),
+        'PORT': os.environ.get("MYSQL_PORT"),
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        }
     }
 }
+
 
 
 # ================== AUTH & PASSWORD ==================
