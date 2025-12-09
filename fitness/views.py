@@ -62,8 +62,7 @@ def services(request):
     return HttpResponse("hey this is Services page")
 
 
-def trainer(request):
-    return render(request, 'trainer.html')
+
 
 
 def membership(request):
